@@ -21,9 +21,7 @@ export default function TextForm(props) {
     };
     
     const handleOnClickCopy = () => {
-        let text = document.getElementById("exampleFormControlTextarea1")
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert('Text copied', 'success')
     };
 
@@ -83,7 +81,7 @@ export default function TextForm(props) {
             <div className="container my-3">
                 <h1>Your text summary</h1>
                 <p>
-                    {text.length===0?0:text.trim().split(' ').length} Words and {text.length} Characters
+                    {text.length===0?0:text.trim().split(/\s+/).length} Words and {text.length} Characters
                 </p>
                 <p>{text.length===0?0:text.trim().split(' ').length * 0.008} mins required </p>
                 <h3>Preview</h3>
